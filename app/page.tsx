@@ -14,23 +14,12 @@ import {
   Mail,
   MapPin,
   ChevronRight,
-  Search,
-  Menu,
-  X,
 } from "lucide-react";
+import Navbar from "./components/Navbar";
 
 /* ──────────────────────────────────────────────
    DATA
    ────────────────────────────────────────────── */
-
-const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "#products" },
-  { label: "Shop By Solution", href: "#solutions" },
-  { label: "Services", href: "#services" },
-  { label: "Resources", href: "#resources" },
-  { label: "Support", href: "#support" },
-];
 
 const CATEGORY_CARDS = [
   { icon: Monitor, title: "Smart Classroom Solutions", count: "12 Products", color: "from-slate-700 to-slate-900" },
@@ -225,46 +214,7 @@ export default function Home() {
       </div>
 
       {/* ═══════ NAVBAR ═══════ */}
-      <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm shadow-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-900 text-white">
-              <Monitor className="h-5 w-5" />
-            </div>
-            <span className="text-lg font-bold tracking-tight text-slate-900">Creators Mind</span>
-          </Link>
-
-          {/* Desktop nav */}
-          <div className="hidden items-center gap-6 md:flex">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-gray-600 transition-colors hover:text-slate-900"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-
-          {/* Actions */}
-          <div className="flex items-center gap-3">
-            <button className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors">
-              <Search className="h-5 w-5" />
-            </button>
-            <button className="relative rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">
-                0
-              </span>
-            </button>
-            <button className="md:hidden rounded-lg p-2 text-gray-500 hover:bg-gray-100 transition-colors">
-              <Menu className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* ═══════ HERO ═══════ */}
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 text-white">
