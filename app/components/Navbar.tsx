@@ -88,7 +88,7 @@ export default function Navbar() {
         </div>
 
         {/* ── Row 2: Category Bar ── */}
-        <div className="border-t border-gray-200 bg-white overflow-x-auto">
+        <div className="border-t border-gray-200 bg-white overflow-x-auto scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center whitespace-nowrap">
 
