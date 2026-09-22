@@ -21,15 +21,16 @@ import Navbar from "./components/Navbar";
    DATA
    ────────────────────────────────────────────── */
 
-const CATEGORY_CARDS = [
-  { icon: Monitor, title: "Smart Classroom Solutions", count: "12 Products", color: "from-slate-700 to-slate-900" },
-  { icon: Mic, title: "Audio & Microphones", count: "8 Products", color: "from-slate-600 to-slate-800" },
-  { icon: Cable, title: "Digital Board Accessories", count: "15 Products", color: "from-slate-700 to-slate-900" },
-  { icon: Cpu, title: "Computer Accessories", count: "10 Products", color: "from-slate-600 to-slate-800" },
-  { icon: Cable, title: "Cables & Connectivity", count: "18 Products", color: "from-slate-700 to-slate-900" },
-  { icon: Monitor, title: "Digital Boards", count: "6 Products", color: "from-slate-600 to-slate-800" },
-  { icon: Camera, title: "Cameras & Video", count: "9 Products", color: "from-slate-700 to-slate-900" },
-  { icon: Package, title: "Studio & Podcast Setup", count: "7 Products", color: "from-slate-600 to-slate-800" },
+const BRANDS = [
+  { name: "Hamlog", logo: "https://placehold.co/200x80/0f172a/ffffff?text=Hamlog&font=montserrat" },
+  { name: "LG", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/LG_Electronics.png" },
+  { name: "Samsung", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung_Orig_Wordmark_BLACK_RGB.png" },
+  { name: "MAXHUB", logo: "https://placehold.co/200x80/1e293b/ffffff?text=MAXHUB&font=montserrat" },
+  { name: "Study N Learn", logo: "https://placehold.co/200x80/334155/ffffff?text=Study+N+Learn&font=montserrat" },
+  { name: "iSlate", logo: "https://placehold.co/200x80/475569/ffffff?text=iSlate&font=montserrat" },
+  { name: "ViewSonic", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/ViewSonic_logo.svg" },
+  { name: "Sybernatix", logo: "https://placehold.co/200x80/0f172a/ffffff?text=Sybernatix&font=montserrat" },
+  { name: "Evota", logo: "https://placehold.co/200x80/1e293b/ffffff?text=Evota&font=montserrat" },
 ];
 
 interface Product {
@@ -38,51 +39,34 @@ interface Product {
   price: number;
   originalPrice?: number;
   badge?: string;
+  image?: string;
   category: string;
 }
 
 const PRODUCTS_BY_CATEGORY: Record<string, Product[]> = {
-  "Smart Classroom Solutions": [
-    { name: "ViewSonic A14 75\" Interactive Panel", description: "75 Inch Interactive Digital Board with 4K display and multi-touch support.", price: 145000, originalPrice: 210000, badge: "Best Seller", category: "Smart Classroom Solutions" },
-    { name: "Hisense A13 75\" Interactive Learning Board", description: "75 Inch Smart Digital Board with Touch technology for classrooms.", price: 145000, originalPrice: 210000, category: "Smart Classroom Solutions" },
-    { name: "Teachmint X2 Ultra 75\" AI Digital Board", description: "AI-powered 75 Inch Digital Board for smart teaching experience.", price: 140000, originalPrice: 190000, badge: "New", category: "Smart Classroom Solutions" },
-    { name: "Teachmint Star 75\" Interactive Smart Board", description: "Interactive Smart Board designed for modern learning environments.", price: 110000, originalPrice: 150000, category: "Smart Classroom Solutions" },
+  "Interactive Digital Boards": [
+    { name: "ViewSonic IFP7550 75\" 4K Interactive Display", description: "ViewSonic 75\" 4K UHD interactive flat panel with 20-point touch, built-in Android 8.0.", price: 189000, originalPrice: 245000, badge: "Best Seller", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD4MSZONvbVoAWOJ1v05zfkoUCLQFLQMGU_PbuY0Fne_PdlJDPjYmJvUoe&s=10", category: "Interactive Digital Boards" },
+    { name: "MAXHUB V6 86\" 4K Interactive Panel", description: "MAXHUB 86\" 4K interactive flat panel with wireless screen sharing and built-in camera.", price: 285000, originalPrice: 380000, badge: "Premium", image: "https://cdn11.bigcommerce.com/s-mfdnq9n4ks/images/stencil/1280x1280/products/5277/23617/1695890479.1280.1280__75644.1695890602.jpg?c=2", category: "Interactive Digital Boards" },
+    { name: "Samsung Flip 2 WM55R 55\" Digital Flipchart", description: "Samsung 55\" 4K UHD digital flipchart with pen input and wireless connectivity.", price: 165000, originalPrice: 210000, image: "https://cdn.shopify.com/s/files/1/0624/3155/9831/files/SAMSUNG-02.png?v=1717778817", category: "Interactive Digital Boards" },
+    { name: "Hamlog 75\" Smart Interactive Board", description: "Hamlog 75\" interactive board with 4K display, 20-point touch and Android 11.", price: 125000, originalPrice: 160000, badge: "New", image: "https://5.imimg.com/data5/SELLER/Default/2026/4/598720000/WN/ZZ/CP/24364364/interactive-smart-board.jpeg", category: "Interactive Digital Boards" },
   ],
-  "Audio & Microphones": [
-    { name: "PencilAi Pro Mic", description: "Professional wireless microphone by Creators Mind for clear audio.", price: 4999, category: "Audio & Microphones" },
-    { name: "PencilAi Air Mic Wireless", description: "Wireless Microphone System with seamless connectivity.", price: 4999, category: "Audio & Microphones" },
-    { name: "PencilAi Teaching Mic", description: "Clean audio capture mic designed specifically for teaching.", price: 3000, category: "Audio & Microphones" },
-    { name: "Podcast Studio Condenser Microphone", description: "Professional condenser microphone for podcast recording.", price: 5499, category: "Audio & Microphones" },
+  "LG & Samsung Displays": [
+    { name: "LG 65UN711C 65\" 4K UHD Commercial TV", description: "LG 65\" 4K UHD commercial display with webOS, perfect for digital signage.", price: 89000, originalPrice: 115000, badge: "Best Seller", image: "https://5.imimg.com/data5/SELLER/Default/2020/12/IX/EQ/BJ/6428109/samsung-pm55h-500x500.jpg", category: "LG & Samsung Displays" },
+    { name: "Samsung QM55R 55\" 4K QLED Signage", description: "Samsung 55\" QLED 4K professional display with MagicINFO built-in.", price: 98000, originalPrice: 130000, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvqnT7WmvnphqY_IXk2QxorWOAk-ThQLY9hSwFEvYpQ0osbMMrHVvp7amy&s=10", category: "LG & Samsung Displays" },
+    { name: "LG 75UN570H 75\" 4K Hotel TV Display", description: "LG 75\" 4K UHD Pro:Centric Smart Hotel TV with Pro:Idiom.", price: 145000, originalPrice: 185000, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo4FKKuPyn7u88OVtYH5bRplQKlaAxFztKrKqAwqMO1g&s=10", category: "LG & Samsung Displays" },
+    { name: "Samsung PM55H 55\" Full HD Videowall", description: "Samsung 55\" Full HD video wall display with 0.9mm ultra-narrow bezel.", price: 75000, originalPrice: 95000, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdqhCWYTsetcQExVVtEhQMsu-OFanl2PDJmG2jjKYqaAT1TAXxwTW0mBEG&s=10", category: "LG & Samsung Displays" },
   ],
-  "Digital Board Accessories": [
-    { name: "DVI to VGA Display Converter Cable", description: "High Quality 3 Meter DVI to VGA converter cable.", price: 299, category: "Digital Board Accessories" },
-    { name: "HD Auto Focus Webcam", description: "Webcam for Online Classes & Video Meetings with auto focus.", price: 1999, originalPrice: 3499, category: "Digital Board Accessories" },
-    { name: "Wall Mount for Interactive Panels", description: "Fixed Wall Mount compatible with all interactive panels.", price: 3999, category: "Digital Board Accessories" },
-    { name: "OPS Computer Module", description: "OPS Computer Module for Interactive Panels – Transform your board.", price: 24999, originalPrice: 34999, category: "Digital Board Accessories" },
+  "Study N Learn & iSlate Boards": [
+    { name: "Study N Learn 75\" Smart Class Board", description: "Study N Learn 75\" interactive smart board with pre-loaded educational content.", price: 95000, originalPrice: 130000, badge: "Best Seller", image: "https://m.media-amazon.com/images/I/61nusmLOkeL.jpg", category: "Study N Learn & iSlate Boards" },
+    { name: "iSlate 65\" Interactive Flat Panel", description: "iSlate 65\" interactive flat panel with 4K display and multi-touch support.", price: 78000, originalPrice: 105000, image: "https://m.media-amazon.com/images/I/51mXmUhuvpL.jpg", category: "Study N Learn & iSlate Boards" },
+    { name: "Study N Learn 86\" AI Smart Board", description: "Study N Learn 86\" AI-powered smart board with voice recognition.", price: 145000, originalPrice: 190000, badge: "New", image: "https://m.media-amazon.com/images/I/51BtPCg4nVL.jpg", category: "Study N Learn & iSlate Boards" },
+    { name: "iSlate 75\" 4K Touch Display", description: "iSlate 75\" 4K UHD touch display with Android 11 and built-in speakers.", price: 110000, originalPrice: 145000, image: "https://5.imimg.com/data5/SELLER/Default/2023/7/329489263/SE/BY/TP/77525639/75-inch-interactive-display-terminal-500x500.jpg", category: "Study N Learn & iSlate Boards" },
   ],
-  "Computer Accessories": [
-    { name: "PencilAi Smart All-In-One PC", description: "All In One Computer designed for modern education needs.", price: 54999, originalPrice: 64999, category: "Computer Accessories" },
-    { name: "Mini PC for Business & Education", description: "Compact Mini PC perfect for business and education use.", price: 24999, originalPrice: 29999, category: "Computer Accessories" },
-    { name: "USB WiFi Adapter for PC & Desktop", description: "Turn your desktop into a wireless workstation instantly.", price: 599, originalPrice: 899, category: "Computer Accessories" },
-    { name: "Wireless Keyboard & Mouse Combo", description: "Create a clutter-free workspace with this wireless combo.", price: 1499, originalPrice: 2299, category: "Computer Accessories" },
-  ],
-  "Cables & Connectivity": [
-    { name: "DVI to VGA Display Converter Cable", description: "High Quality 3 Meter DVI to VGA converter cable.", price: 299, category: "Cables & Connectivity" },
-    { name: "HDMI Cable 3m / 5m High Speed 4K", description: "Premium HDMI Cable supporting 4K resolution at high speed.", price: 999, category: "Cables & Connectivity" },
-    { name: "10m USB 3.0 Extension Cable", description: "Extend your camera connectivity up to 10 meters reliably.", price: 2500, category: "Cables & Connectivity" },
-    { name: "HDMI to DVI Cable 3 Metre", description: "High-Speed Digital HDMI to DVI conversion cable.", price: 1399, category: "Cables & Connectivity" },
-  ],
-  "Digital Boards": [
-    { name: "MAXHUB U4 75\" Interactive Flat Panel", description: "Premium 75 Inch Interactive Flat Panel Display for professionals.", price: 215000, originalPrice: 399999, badge: "Premium", category: "Digital Boards" },
-    { name: "Teachmint Star 65\" Interactive Board", description: "65 Inch Interactive Digital Board for compact classrooms.", price: 95000, originalPrice: 130000, category: "Digital Boards" },
-    { name: "Teachmint Ultra 65\" AI Teaching Station", description: "AI Teaching Station with 8GB RAM + 256GB Storage.", price: 115000, originalPrice: 150000, category: "Digital Boards" },
-    { name: "Teachmint Star 75\" Interactive Smart Board", description: "Interactive Smart Board designed for modern learning.", price: 110000, originalPrice: 150000, category: "Digital Boards" },
-  ],
-  "Cameras & Video": [
-    { name: "Teaching Camera for Smart Classroom", description: "Camera optimized for Smart Classroom & Online Teaching.", price: 8999, originalPrice: 14999, category: "Cameras & Video" },
-    { name: "PencilAi FHD PTZ Camera", description: "Bring every speaker and teacher into crystal-clear focus.", price: 55000, originalPrice: 70000, category: "Cameras & Video" },
-    { name: "PencilAi 4K PTZ Camera with Auto-Focus", description: "4K PTZ Camera with advanced auto-focus capabilities.", price: 90000, category: "Cameras & Video" },
-    { name: "PencilAi Pro Camera", description: "High-end professional camera for studio-grade recordings.", price: 95000, category: "Cameras & Video" },
+  "Sybernatix & Evota Solutions": [
+    { name: "Sybernatix OPS PC Module i5", description: "Sybernatix OPS PC module with Intel i5, 8GB RAM, 256GB SSD for interactive panels.", price: 28000, originalPrice: 38000, badge: "Best Seller", image: "https://5.imimg.com/data5/SELLER/Default/2025/11/560410701/VI/DC/XK/201329385/i5-ops.jpg", category: "Sybernatix & Evota Solutions" },
+    { name: "Evota 75\" Interactive Smart Panel", description: "Evota 75\" 4K interactive smart panel with dual OS Android + Windows.", price: 118000, originalPrice: 155000, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1h7WkW_vbG3e516hkEa3bONTWpJEWdx6gx8dbV4VZ2qSsUGcTN_xsVVY&s=10", category: "Sybernatix & Evota Solutions" },
+    { name: "Sybernatix Wall Mount Heavy Duty", description: "Sybernatix heavy duty wall mount for 55\" to 86\" interactive panels.", price: 4500, originalPrice: 6500, image: "https://m.media-amazon.com/images/I/71IDINAoAJL.jpg", category: "Sybernatix & Evota Solutions" },
+    { name: "Evota OPS i7 Computer Module", description: "Evota OPS i7 module with 16GB RAM, 512GB SSD, Windows 11 Pro.", price: 42000, originalPrice: 58000, badge: "New", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1OMzBn2I3bh7R7W0BX-7dfJcTWooSs4-U8kWqEkhD8TqHMt2DAu-iVDE&s=10", category: "Sybernatix & Evota Solutions" },
   ],
 };
 
@@ -98,17 +82,17 @@ const FEATURED_CATEGORIES = [
 ];
 
 const FEATURED_PRODUCTS: Product[] = [
-  { name: "Professional LED Monitor", description: "High-resolution LED monitor for professional use.", price: 4999, category: "Featured" },
-  { name: "3.5mm AUX Audio Cable", description: "AUX Audio Cable for PC, Laptop, Speaker & Car Stereo.", price: 599, category: "Featured" },
-  { name: "Webcam for Online Classes", description: "Perfect webcam for online classes and video meetings.", price: 1999, category: "Featured" },
-  { name: "Universal Monitor Wall Mount", description: "Compatible wall mount for all monitor sizes.", price: 999, category: "Featured" },
+  { name: "ViewSonic IFP6550 65\" 4K Interactive Panel", description: "ViewSonic 65\" 4K interactive display with 20-point touch and Android 9.0.", price: 145000, originalPrice: 185000, badge: "Featured", image: "https://5.imimg.com/data5/SELLER/Default/2022/2/TM/ZR/VV/9197417/r-500x500.png", category: "Featured" },
+  { name: "MAXHUB C65 New 65\" Interactive Panel", description: "MAXHUB 65\" 4K interactive panel with wireless sharing and built-in mic.", price: 165000, originalPrice: 210000, badge: "Featured", image: "https://5.imimg.com/data5/SELLER/Default/2024/10/455953504/CQ/KG/PK/879167/maxhub-interactive-panel-65-with-ops.webp", category: "Featured" },
+  { name: "Samsung WAD Series 55\" Interactive Display", description: "Samsung 55\" interactive display with S Pen and flip-style writing.", price: 135000, originalPrice: 170000, badge: "Featured", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbl9O3jad5tndq6w0buQrp26I7FzEn2Iby3CxvSlWZmEFOhDimc0iQ0I4f&s=10", category: "Featured" },
+  { name: "Hamlog 65\" Smart Interactive Board", description: "Hamlog 65\" smart board with 4K display, Android 11 and 20-point touch.", price: 89000, originalPrice: 120000, badge: "Featured", image: "https://cpimg.tistatic.com/10423349/b/4/High-Solid-Smart-Interactive-Classroom-Board..jpg", category: "Featured" },
 ];
 
 const BEST_SELLERS: Product[] = [
-  { name: "MAXHUB U4 75\" Interactive Flat Panel", description: "Premium interactive flat panel display.", price: 215000, category: "Best Sellers" },
-  { name: "Teachmint Star 65\" Interactive Digital Board", description: "Popular 65 inch interactive digital board.", price: 95000, category: "Best Sellers" },
-  { name: "Teachmint Ultra 65\" AI Teaching Station", description: "AI Teaching Station with 8GB RAM + 256GB Storage.", price: 115000, category: "Best Sellers" },
-  { name: "Teachmint Star 75\" Interactive Smart Board", description: "Interactive smart board for modern classrooms.", price: 110000, category: "Best Sellers" },
+  { name: "MAXHUB V6 75\" 4K Interactive Panel", description: "MAXHUB 75\" 4K interactive flat panel — most sold enterprise board.", price: 245000, originalPrice: 320000, badge: "Best Seller", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfBTCTgpm6mFV5BKOECX0R3uyAL6mCqItZOKOs-pHLcQ&s=10", category: "Best Sellers" },
+  { name: "ViewSonic IFP7550 75\" Interactive Display", description: "ViewSonic 75\" 4K UHD interactive display with 20-point touch.", price: 189000, originalPrice: 245000, badge: "Best Seller", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw7sicE1xFHbgEczTMx7A7ydH4HO3otcLWnD7hS4vM2SApHtfVhfKTloEm&s=10", category: "Best Sellers" },
+  { name: "LG 75UN711C 75\" 4K Commercial Display", description: "LG 75\" 4K UHD commercial TV with webOS for digital signage.", price: 145000, originalPrice: 185000, badge: "Best Seller", image: "https://images.jdmagicbox.com/quickquotes/images_main/lg-television-23-11-2022-025-272320672-au0wy2zs.jpg", category: "Best Sellers" },
+  { name: "Study N Learn 75\" Smart Class Board", description: "Study N Learn 75\" interactive board with pre-loaded educational content.", price: 95000, originalPrice: 130000, badge: "Best Seller", image: "https://m.media-amazon.com/images/I/51mXmUhuvpL.jpg", category: "Best Sellers" },
 ];
 
 const SOLUTIONS = [
@@ -144,10 +128,14 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="flex flex-col rounded-xl border border-gray-200 bg-white shadow-sm">
-      <div className="relative aspect-square w-full overflow-hidden rounded-t-xl bg-gradient-to-br from-gray-100 to-gray-200">
-        <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-          <Monitor className="h-12 w-12 opacity-40" />
-        </div>
+      <div className="relative aspect-square w-full overflow-hidden rounded-t-xl bg-white border-b border-gray-100">
+        {product.image ? (
+          <img src={product.image} alt={product.name} className="h-full w-full object-contain transition-transform duration-300 hover:scale-105" />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+            <Monitor className="h-12 w-12 opacity-40" />
+          </div>
+        )}
         {discount && (
           <span className="absolute left-2 top-2 rounded-md bg-red-600 px-1.5 py-0.5 text-[10px] font-semibold text-white">
             -{discount}%
@@ -167,9 +155,9 @@ function ProductCard({ product }: { product: Product }) {
         <p className="line-clamp-2 text-[11px] leading-relaxed text-gray-500">{product.description}</p>
 
         <div className="mt-auto flex items-baseline gap-2 pt-1">
-          <span className="text-sm font-bold text-gray-900">Rs. {formatPrice(product.price)}</span>
+          <span className="text-sm font-bold text-gray-900">₹{formatPrice(product.price)}</span>
           {product.originalPrice && (
-            <span className="text-[11px] text-gray-400 line-through">Rs. {formatPrice(product.originalPrice)}</span>
+            <span className="text-[11px] text-gray-400 line-through">₹{formatPrice(product.originalPrice)}</span>
           )}
         </div>
 
@@ -267,6 +255,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══════ BRANDS ═══════ */}
+      <section className="bg-white border-b border-gray-200">
+        <div className="px-4 py-8 sm:px-6">
+          <h2 className="mb-6 text-center text-lg font-bold text-gray-500 uppercase tracking-widest">Our Brand Partners</h2>
+          <div className="flex flex-wrap items-center justify-center gap-8">
+            {BRANDS.map((brand) => (
+              <div key={brand.name} className="flex flex-col items-center gap-1 opacity-70 hover:opacity-100 transition-opacity">
+                <img src={brand.logo} alt={brand.name} className="h-8 object-contain" />
+                <span className="text-xs font-semibold text-gray-500">{brand.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══════ TOP SELLING PRODUCTS ═══════ */}
       <section id="products" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
@@ -329,11 +332,17 @@ export default function Home() {
               key={product.name}
               className="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
             >
-              <div className="mb-3 aspect-[16/9] rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                <Monitor className="h-10 w-10 text-gray-300" />
+              <div className="mb-3 aspect-[4/3] rounded-lg bg-white border border-gray-100 flex items-center justify-center overflow-hidden">
+                {product.image ? (
+                  <img src={product.image} alt={product.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                ) : (
+                  <Monitor className="h-10 w-10 text-gray-300" />
+                )}
               </div>
-              <h3 className="text-sm font-semibold text-gray-900">{product.name}</h3>
-              <p className="mt-1 text-sm font-bold text-gray-900">Rs. {formatPrice(product.price)}</p>
+              <h3 className="text-sm font-semibold text-gray-900 line-clamp-2">{product.name}</h3>
+              <p className="mt-1 text-sm font-bold text-teal-600">₹{formatPrice(product.price)}
+                {product.originalPrice && <span className="ml-2 text-xs text-gray-400 line-through font-normal">₹{formatPrice(product.originalPrice)}</span>}
+              </p>
               <button className="mt-3 w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:border-gray-400">
                 View Product
               </button>
@@ -352,11 +361,17 @@ export default function Home() {
                 key={product.name}
                 className="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
               >
-                <div className="mb-3 aspect-[16/9] rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
-                  <Monitor className="h-10 w-10 text-slate-300" />
+                <div className="mb-3 aspect-[4/3] rounded-lg bg-white border border-gray-100 flex items-center justify-center overflow-hidden">
+                  {product.image ? (
+                    <img src={product.image} alt={product.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                  ) : (
+                    <Monitor className="h-10 w-10 text-slate-300" />
+                  )}
                 </div>
-                <h3 className="text-sm font-semibold text-gray-900">{product.name}</h3>
-                <p className="mt-1 text-sm font-bold text-gray-900">Rs. {formatPrice(product.price)}</p>
+                <h3 className="text-sm font-semibold text-gray-900 line-clamp-2">{product.name}</h3>
+                <p className="mt-1 text-sm font-bold text-teal-600">₹{formatPrice(product.price)}
+                  {product.originalPrice && <span className="ml-2 text-xs text-gray-400 line-through font-normal">₹{formatPrice(product.originalPrice)}</span>}
+                </p>
                 <button className="mt-3 w-full rounded-lg bg-slate-900 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-slate-700">
                   View Product
                 </button>

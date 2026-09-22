@@ -142,13 +142,13 @@ export default function Navbar() {
           className="hidden md:block border-t border-gray-200 bg-white overflow-x-auto scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
         >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="px-8" style={{ paddingLeft: '88px' }}>
             <div className="flex items-center whitespace-nowrap">
               <button
                 ref={btnRef}
                 onMouseEnter={openDropdown}
                 onMouseLeave={() => setAllOpen(false)}
-                className="inline-flex items-center gap-0.5 px-3 py-3 text-sm font-bold text-gray-800 hover:text-teal-600 transition-colors border-b-2 border-transparent hover:border-teal-500"
+                className="inline-flex items-center gap-0.5 px-2 py-3 text-sm font-bold text-gray-800 hover:text-teal-600 transition-colors border-b-2 border-transparent hover:border-teal-500"
               >
                 All
                 <ChevronDown className={`h-3.5 w-3.5 text-gray-500 transition-transform duration-200 ${allOpen ? "rotate-180" : ""}`} />
@@ -157,7 +157,7 @@ export default function Navbar() {
                 <Link
                   key={cat.label}
                   href={cat.href}
-                  className="inline-flex items-center gap-0.5 px-3 py-3 text-sm font-bold text-gray-800 hover:text-teal-600 transition-colors border-b-2 border-transparent hover:border-teal-500"
+                  className="inline-flex items-center gap-0.5 px-2 py-3 text-sm font-bold text-gray-800 hover:text-teal-600 transition-colors border-b-2 border-transparent hover:border-teal-500"
                 >
                   {cat.label}
                   <ChevronDown className="h-3.5 w-3.5 text-gray-500" />
