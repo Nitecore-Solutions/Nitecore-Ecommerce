@@ -200,19 +200,19 @@ export default function Navbar() {
           {/* Hover brand dropdown */}
           {hoverCat && (
             <div
-              className="fixed z-[9999] rounded-xl border border-gray-200 bg-white shadow-2xl"
+              className="fixed z-[9999] w-80 rounded-xl border border-gray-200 bg-white shadow-2xl"
               style={{ top: hoverPos.top, left: hoverPos.left }}
               onMouseEnter={() => setHoverCat(hoverCat)}
               onMouseLeave={() => closeCatDropdown()}
             >
-              <div className="px-4 py-3">
+              <div className="px-5 pt-4 pb-2">
                 <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Top Brands</p>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+                <div className="grid grid-cols-2 gap-x-4">
                   {(BRAND_GRID[hoverCat] ?? []).map((brand) => (
                     <Link
                       key={brand}
                       href="#"
-                      className="text-sm text-gray-700 hover:text-teal-600 transition-colors"
+                      className="flex items-center justify-between py-1.5 text-sm text-teal-600 hover:text-teal-700 font-medium transition-colors"
                     >
                       {brand}
                     </Link>
