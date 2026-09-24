@@ -8,25 +8,30 @@ import {
 import { useState, useRef, useEffect } from "react";
 
 const CATEGORIES = [
-  { label: "Phone", href: "#phone" },
-  { label: "Laptop", href: "#laptop" },
-  { label: "Airboard", href: "#airboard" },
-  { label: "Speaker", href: "#speaker" },
-  { label: "Light", href: "#light" },
-  { label: "Digital Board", href: "#digital-board" },
-  { label: "Tripod", href: "#tripod" },
-  { label: "Camera", href: "#camera" },
-  { label: "Mic", href: "#mic" },
-  { label: "OPS", href: "#ops" },
-  { label: "Monitor", href: "#monitor" },
-  { label: "Acoustic", href: "#acoustic" },
-  { label: "Podium", href: "#podium" },
-  { label: "Accessories", href: "#accessories" },
-  { label: "Tablet / iPad", href: "#tablet" },
+  { label: "Phone", href: "#phone", brands: ["Apple", "Samsung", "Xiaomi", "OnePlus", "Realme", "Redmi", "Oppo", "Vivo"] },
+  { label: "Laptop", href: "#laptop", brands: ["Apple", "HP", "Samsung", "Lenovo", "Dell", "Honor", "Acer", "Asus"] },
+  { label: "Airboard", href: "#airboard", brands: ["ViewSonic", "MAXHUB", "Samsung", "LG", "Hamlog", "iSlate", "Study N Learn"] },
+  { label: "Speaker", href: "#speaker", brands: ["JBL", "Sony", "Bose", "Marshall", " boat", "Zebronics", "Portronics"] },
+  { label: "Light", href: "#light", brands: ["Philips", "Wipro", "Syska", "Crompton", "Havells", "Luminous"] },
+  { label: "Digital Board", href: "#digital-board", brands: ["ViewSonic", "MAXHUB", "Samsung", "LG", "Hamlog", "iSlate", "Study N Learn"] },
+  { label: "Tripod", href: "#tripod", brands: ["Manfrotto", "Weifeng", "Sirui", "Digipod", "K&F Concept", "Amazon Basics"] },
+  { label: "Camera", href: "#camera", brands: ["Canon", "Sony", "Nikon", "Fujifilm", "Panasonic", "Olympus"] },
+  { label: "Mic", href: "#mic", brands: ["Shure", "Blue Yeti", "Rode", "Audio-Technica", "Boya", "Maono"] },
+  { label: "OPS", href: "#ops", brands: ["Intel", "AMD", "NComputing", "AOPEN", "Advantech", "Onnion"] },
+  { label: "Monitor", href: "#monitor", brands: ["Dell", "HP", "Samsung", "LG", "BenQ", "Acer", "ViewSonic"] },
+  { label: "Acoustic", href: "#acoustic", brands: ["JBL", "Bose", "Sony", "Philips", "Zebronics", "Portronics"] },
+  { label: "Podium", href: "#podium", brands: ["Weibox", "KorePrint", "LapWorks", "SmartPodium", "DigiPodium"] },
+  { label: "Accessories", href: "#accessories", brands: ["Zebronics", "Portronics", "Boat", "Realme", "Mi", "Amazon Basics"] },
+  { label: "Tablet / iPad", href: "#tablet", brands: ["Apple", "Samsung", "Lenovo", "Xiaomi", "Realme", "Redmi", "Oppo"] },
 ];
 
 const DEVICE_SUB = ["Phone", "Laptop", "Airboard", "Tablet / iPad"];
 const MAIN_ITEMS = CATEGORIES.filter((c) => !DEVICE_SUB.includes(c.label));
+
+const BRAND_GRID: Record<string, string[]> = {};
+CATEGORIES.forEach((c) => {
+  BRAND_GRID[c.label] = c.brands ?? [];
+});
 
 export default function Navbar() {
   const [search, setSearch] = useState("");
@@ -34,7 +39,10 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSearch, setMobileSearch] = useState(false);
   const [pos, setPos] = useState({ top: 0, left: 0 });
+  const [hoverCat, setHoverCat] = useState<string | null>(null);
+  const [hoverPos, setHoverPos] = useState({ top: 0, left: 0 });
   const btnRef = useRef<HTMLButtonElement>(null);
+  const hoverBtnRef = useRef<HTMLButtonElement | null>(null);
 
   function openDropdown() {
     if (btnRef.current) {
@@ -42,6 +50,20 @@ export default function Navbar() {
       setPos({ top: r.bottom, left: r.left });
     }
     setAllOpen(true);
+  }
+
+  function openCatDropdown(label: string) {
+    setHoverCat(label);
+  }
+
+  function closeCatDropdown() {
+    setHoverCat(null);
+  }
+
+  function positionCatDropdown(el: HTMLButtonElement | null) {
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    setHoverPos({ top: r.bottom, left: r.left });
   }
 
   useEffect(() => {
@@ -154,17 +176,51 @@ export default function Navbar() {
                 <ChevronDown className={`h-3.5 w-3.5 text-gray-500 transition-transform duration-200 ${allOpen ? "rotate-180" : ""}`} />
               </button>
               {CATEGORIES.map((cat) => (
-                <Link
+                <button
                   key={cat.label}
-                  href={cat.href}
+                  ref={(el) => {
+                    if (el) hoverBtnRef.current = el;
+                  }}
+                  onMouseEnter={() => openCatDropdown(cat.label)}
+                  onMouseLeave={() => closeCatDropdown()}
+                  onFocus={() => {
+                    positionCatDropdown(hoverBtnRef.current);
+                    openCatDropdown(cat.label);
+                  }}
+                  onBlur={() => closeCatDropdown()}
                   className="inline-flex items-center gap-0.5 px-2 py-3 text-sm font-bold text-gray-800 hover:text-teal-600 transition-colors border-b-2 border-transparent hover:border-teal-500"
                 >
                   {cat.label}
                   <ChevronDown className="h-3.5 w-3.5 text-gray-500" />
-                </Link>
+                </button>
               ))}
             </div>
           </div>
+
+          {/* Hover brand dropdown */}
+          {hoverCat && (
+            <div
+              className="fixed z-[9999] rounded-xl border border-gray-200 bg-white shadow-2xl"
+              style={{ top: hoverPos.top, left: hoverPos.left }}
+              onMouseEnter={() => setHoverCat(hoverCat)}
+              onMouseLeave={() => closeCatDropdown()}
+            >
+              <div className="px-4 py-3">
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Top Brands</p>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+                  {(BRAND_GRID[hoverCat] ?? []).map((brand) => (
+                    <Link
+                      key={brand}
+                      href="#"
+                      className="text-sm text-gray-700 hover:text-teal-600 transition-colors"
+                    >
+                      {brand}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -182,10 +238,17 @@ export default function Navbar() {
               {DEVICE_SUB.map((label) => {
                 const cat = CATEGORIES.find((c) => c.label === label)!;
                 return (
-                  <Link key={label} href={cat.href} className="flex items-center justify-between py-1.5 text-sm text-teal-600 hover:text-teal-700 font-medium transition-colors">
-                    {label}
-                    <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
-                  </Link>
+                  <div key={label}>
+                    <Link key={label} href={cat.href} className="flex items-center justify-between py-1.5 text-sm text-teal-600 hover:text-teal-700 font-medium transition-colors">
+                      {label}
+                      <ChevronRight className="h-3.5 w-3.5 text-gray-300" />
+                    </Link>
+                    <div className="flex flex-wrap gap-1 pl-1">
+                      {(BRAND_GRID[label] ?? []).slice(0, 3).map((brand) => (
+                        <span key={brand} className="text-[10px] text-gray-400">{brand}</span>
+                      ))}
+                    </div>
+                  </div>
                 );
               })}
             </div>
@@ -194,10 +257,17 @@ export default function Navbar() {
           <div className="px-5 py-2 pb-3">
             <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 mt-1">All Categories</p>
             {MAIN_ITEMS.map((cat) => (
-              <Link key={cat.label} href={cat.href} className="flex items-center justify-between py-2 text-sm font-bold text-gray-800 hover:text-teal-600 transition-colors">
-                {cat.label}
-                <ChevronRight className="h-4 w-4 text-gray-400" />
-              </Link>
+              <div key={cat.label}>
+                <Link key={cat.label} href={cat.href} className="flex items-center justify-between py-2 text-sm font-bold text-gray-800 hover:text-teal-600 transition-colors">
+                  {cat.label}
+                  <ChevronRight className="h-4 w-4 text-gray-400" />
+                </Link>
+                <div className="flex flex-wrap gap-1 pl-1">
+                  {(BRAND_GRID[cat.label] ?? []).slice(0, 3).map((brand) => (
+                    <span key={brand} className="text-[10px] text-gray-400">{brand}</span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -225,29 +295,41 @@ export default function Navbar() {
               {DEVICE_SUB.map((label) => {
                 const cat = CATEGORIES.find((c) => c.label === label)!;
                 return (
-                  <Link
-                    key={label}
-                    href={cat.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-between py-3 text-sm text-teal-600 font-semibold border-b border-gray-100"
-                  >
-                    {label}
-                    <ChevronRight className="h-4 w-4 text-gray-300" />
-                  </Link>
+                  <div key={label}>
+                    <Link
+                      href={cat.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center justify-between py-3 text-sm text-teal-600 font-semibold border-b border-gray-100"
+                    >
+                      {label}
+                      <ChevronRight className="h-4 w-4 text-gray-300" />
+                    </Link>
+                    <div className="grid grid-cols-2 gap-2 pl-4 pr-2 py-2 border-b border-gray-100">
+                      {(BRAND_GRID[label] ?? []).slice(0, 4).map((brand) => (
+                        <span key={brand} className="text-xs text-gray-500">{brand}</span>
+                      ))}
+                    </div>
+                  </div>
                 );
               })}
 
               <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mt-4 mb-2">All Categories</p>
               {MAIN_ITEMS.map((cat) => (
-                <Link
-                  key={cat.label}
-                  href={cat.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between py-3 text-sm font-bold text-gray-800 border-b border-gray-100 hover:text-teal-600 transition-colors"
-                >
-                  {cat.label}
-                  <ChevronRight className="h-4 w-4 text-gray-400" />
-                </Link>
+                <div key={cat.label}>
+                  <Link
+                    href={cat.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between py-3 text-sm font-bold text-gray-800 border-b border-gray-100 hover:text-teal-600 transition-colors"
+                  >
+                    {cat.label}
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </Link>
+                  <div className="grid grid-cols-2 gap-2 pl-4 pr-2 py-2 border-b border-gray-100">
+                    {(BRAND_GRID[cat.label] ?? []).slice(0, 4).map((brand) => (
+                      <span key={brand} className="text-xs text-gray-500">{brand}</span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
 
