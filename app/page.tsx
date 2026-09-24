@@ -22,15 +22,18 @@ import Navbar from "./components/Navbar";
    ────────────────────────────────────────────── */
 
 const BRANDS = [
-  { name: "Hamlog", logo: "https://placehold.co/200x80/0f172a/ffffff?text=Hamlog&font=montserrat" },
-  { name: "LG", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/LG_Electronics.png" },
-  { name: "Samsung", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/Samsung_Orig_Wordmark_BLACK_RGB.png" },
-  { name: "MAXHUB", logo: "https://placehold.co/200x80/1e293b/ffffff?text=MAXHUB&font=montserrat" },
-  { name: "Study N Learn", logo: "https://placehold.co/200x80/334155/ffffff?text=Study+N+Learn&font=montserrat" },
-  { name: "iSlate", logo: "https://placehold.co/200x80/475569/ffffff?text=iSlate&font=montserrat" },
-  { name: "ViewSonic", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/ViewSonic_logo.svg" },
-  { name: "Sybernatix", logo: "https://placehold.co/200x80/0f172a/ffffff?text=Sybernatix&font=montserrat" },
-  { name: "Evota", logo: "https://placehold.co/200x80/1e293b/ffffff?text=Evota&font=montserrat" },
+  { name: "Apple", logo: "https://placehold.co/120x40/000000/ffffff?text=Apple&font=montserrat" },
+  { name: "Samsung", logo: "https://placehold.co/120x40/1428a0/ffffff?text=Samsung&font=montserrat" },
+  { name: "HP", logo: "https://placehold.co/120x40/0096d6/ffffff?text=HP&font=montserrat" },
+  { name: "Lenovo", logo: "https://placehold.co/120x40/e2231a/ffffff?text=Lenovo&font=montserrat" },
+  { name: "Dell", logo: "https://placehold.co/120x40/007db8/ffffff?text=Dell&font=montserrat" },
+  { name: "Honor", logo: "https://placehold.co/120x40/000000/ffffff?text=Honor&font=montserrat" },
+  { name: "LG", logo: "https://placehold.co/120x40/a50034/ffffff?text=LG&font=montserrat" },
+  { name: "MAXHUB", logo: "https://placehold.co/120x40/1e293b/ffffff?text=MAXHUB&font=montserrat" },
+  { name: "ViewSonic", logo: "https://placehold.co/120x40/0066b3/ffffff?text=ViewSonic&font=montserrat" },
+  { name: "Hamlog", logo: "https://placehold.co/120x40/0f172a/ffffff?text=Hamlog&font=montserrat" },
+  { name: "iSlate", logo: "https://placehold.co/120x40/475569/ffffff?text=iSlate&font=montserrat" },
+  { name: "Evota", logo: "https://placehold.co/120x40/1e293b/ffffff?text=Evota&font=montserrat" },
 ];
 
 interface Product {
@@ -257,13 +260,16 @@ export default function Home() {
 
       {/* ═══════ BRANDS ═══════ */}
       <section className="bg-white border-b border-gray-200">
-        <div className="px-4 py-8 sm:px-6">
-          <h2 className="mb-6 text-center text-lg font-bold text-gray-500 uppercase tracking-widest">Our Brand Partners</h2>
-          <div className="flex flex-wrap items-center justify-center gap-8">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <h2 className="mb-4 text-center text-lg font-bold text-gray-900">Top Brands</h2>
+          <div className="flex gap-3 overflow-x-auto scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
             {BRANDS.map((brand) => (
-              <div key={brand.name} className="flex flex-col items-center gap-1 opacity-70 hover:opacity-100 transition-opacity">
-                <img src={brand.logo} alt={brand.name} className="h-8 object-contain" />
-                <span className="text-xs font-semibold text-gray-500">{brand.name}</span>
+              <div
+                key={brand.name}
+                className="flex flex-col items-center gap-1 rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm transition-all hover:border-slate-300 hover:shadow-md"
+              >
+                <img src={brand.logo} alt={brand.name} className="h-6 w-auto object-contain" />
+                <span className="text-[11px] font-semibold text-gray-600 whitespace-nowrap">{brand.name}</span>
               </div>
             ))}
           </div>
