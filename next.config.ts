@@ -14,8 +14,10 @@ const nextConfig: NextConfig = {
       { hostname: "cdn.shopify.com" },
       { hostname: "5.imimg.com" },
       { hostname: "cpimg.tistatic.com" },
+      { hostname: "res.cloudinary.com" },
     ],
   },
+  serverExternalPackages: ["mysql2", "jsonwebtoken", "bcryptjs", "cloudinary"],
 };
 
 export default nextConfig;

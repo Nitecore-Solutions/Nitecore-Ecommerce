@@ -31,7 +31,6 @@ const BRANDS = [
   { name: "LG", logo: "https://placehold.co/120x40/a50034/ffffff?text=LG&font=montserrat" },
   { name: "MAXHUB", logo: "https://placehold.co/120x40/1e293b/ffffff?text=MAXHUB&font=montserrat" },
   { name: "ViewSonic", logo: "https://placehold.co/120x40/0066b3/ffffff?text=ViewSonic&font=montserrat" },
-  { name: "Hamlog", logo: "https://placehold.co/120x40/0f172a/ffffff?text=Hamlog&font=montserrat" },
   { name: "iSlate", logo: "https://placehold.co/120x40/475569/ffffff?text=iSlate&font=montserrat" },
   { name: "Evota", logo: "https://placehold.co/120x40/1e293b/ffffff?text=Evota&font=montserrat" },
 ];
@@ -200,12 +199,12 @@ export default function Home() {
       <div className="bg-slate-900 text-xs text-gray-300">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4">
-            <a href="tel:+917070512666" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <Phone className="h-3 w-3" /> +91 70705 12666
-            </a>
-            <a href="mailto:support@creatorsmind.co.in" className="hidden items-center gap-1.5 hover:text-white transition-colors sm:flex">
-              <Mail className="h-3 w-3" /> support@creatorsmind.co.in
-            </a>
+             <a href="tel:+919905969905" className="flex items-center gap-1.5 hover:text-white transition-colors">
+               <Phone className="h-3 w-3" /> +91 99059 69905
+             </a>
+             <a href="mailto:nitecoresolutions@gmail.com" className="hidden items-center gap-1.5 hover:text-white transition-colors sm:flex">
+               <Mail className="h-3 w-3" /> nitecoresolutions@gmail.com
+             </a>
           </div>
           <div className="flex items-center gap-3">
             <a href="#" className="hover:text-white transition-colors text-xs font-medium">FB</a>
@@ -451,17 +450,17 @@ export default function Home() {
               <h2 className="text-2xl font-bold sm:text-3xl">Get in Touch</h2>
               <p className="mt-3 text-gray-300">We&apos;d love to hear from you! Reach out for quotes, demos, or any questions.</p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="tel:+917070512666" className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-gray-100">
-                  <Phone className="h-4 w-4" /> Call Us
-                </a>
-                <a href="https://wa.me/917070512666" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20">
-                  <MessageCircle className="h-4 w-4" /> Chat Now
-                </a>
-              </div>
-              <div className="mt-8 space-y-3 text-sm text-gray-300">
-                <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" /> Patna, Bihar, India</div>
-                <div className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0" /> +91 70705 12666</div>
-                <div className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0" /> support@creatorsmind.co.in</div>
+                 <a href="tel:+919905969905" className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-gray-100">
+                   <Phone className="h-4 w-4" /> Call Us
+                 </a>
+                 <a href="https://wa.me/919905969905" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20">
+                   <MessageCircle className="h-4 w-4" /> Chat Now
+                 </a>
+               </div>
+               <div className="mt-8 space-y-3 text-sm text-gray-300">
+                  <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" /> Noida Corporate Office, Delhi NCR / Ghaziabad (U.P)<br />Gali no 5, Radha krishna colony Akbarpur (Behrampur), Near By-Tigri Gol Chakkar, Vijay Nagar Ghaziabad (U.P) 201009</div>
+                 <div className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0" /> +91 99059 69905</div>
+                 <div className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0" /> nitecoresolutions@gmail.com</div>
               </div>
             </div>
 
@@ -515,7 +514,7 @@ export default function Home() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white">
                   <Monitor className="h-4 w-4" />
                 </div>
-                <span className="text-base font-bold text-slate-900">Creators Mind</span>
+                <span className="text-base font-bold text-slate-900">NITECORE SOLUTIONS</span>
               </div>
               <p className="mt-3 text-xs leading-relaxed text-gray-500">
                 Complete solutions for Smart Classrooms, Digital Boards, Podcast Studios, Streaming Setups, PCs, Networking, Apps, Websites & Digital Services.
@@ -567,7 +566,7 @@ export default function Home() {
 
           {/* Bottom bar */}
           <div className="mt-6 border-t border-gray-100 pt-6 text-center text-xs text-gray-400">
-            © {new Date().getFullYear()} Creators Mind. All Rights Reserved.
+            © {new Date().getFullYear()} NITECORE SOLUTIONS. All Rights Reserved.
           </div>
         </div>
       </footer>
